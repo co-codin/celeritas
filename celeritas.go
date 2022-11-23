@@ -1,5 +1,5 @@
 package celeritas
 
-func TestFunc(a, b) int {
+func TestFunc(a, b int) int {
 	return a + b
 }
