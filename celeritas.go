@@ -11,9 +11,12 @@ type Celeritas struct {
 
 
 func (c *Celeritas) New(rootPath string) error {
-
+	return nil
 }
 
 func (c *Celeritas) Init(p initPaths) error {
-    return nil
+    root := p.rootPath
+	for _, path := range p.folderNames {
+		// create folder if it doesnt exist
+	}
 }
