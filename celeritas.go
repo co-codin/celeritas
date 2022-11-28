@@ -1,5 +1,13 @@
 package celeritas
 
-func TestFunc(a, b int) int {
-	return a + b
+const version = "1.0.0"
+
+type Celeritas struct {
+	AppName string
+	Debug   bool
+	Version string
+}
+
+func (c *Celeritas) New(rootPath string) error {
+
 }
