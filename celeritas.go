@@ -8,6 +8,12 @@ type Celeritas struct {
 	Version string
 }
 
+
+
 func (c *Celeritas) New(rootPath string) error {
 
+}
+
+func (c *Celeritas) Init(p initPaths) error {
+    return nil
 }
