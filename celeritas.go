@@ -8,20 +8,33 @@ type Celeritas struct {
 	Version string
 }
 
-
-
 func (c *Celeritas) New(rootPath string) error {
+	pathConfig := initPaths{
+		rootPath: rootPath,
+		folderNames: []string{
+			"handlers",
+			"migrations",
+			"views",
+			"data",
+			"public",
+			"tmp",
+		},
+	}
+	err := c.Init(pathConfig)
+	if err != nil {
+		return err
+	}
 	return nil
 }
 
 func (c *Celeritas) Init(p initPaths) error {
-    root := p.rootPath
+	root := p.rootPath
 	for _, path := range p.folderNames {
 		// create folder if it doesnt exist
 		err := c.CreateDirIfNotExists(root + "/" + path)
-	    if err!= nil {
-            return err
-        }
-    }
+		if err != nil {
+			return err
+		}
+	}
 	return nil
 }
