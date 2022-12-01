@@ -1,5 +1,7 @@
 package celeritas
 
+import "fmt"
+
 const version = "1.0.0"
 
 type Celeritas struct {
@@ -21,9 +23,19 @@ func (c *Celeritas) New(rootPath string) error {
 		},
 	}
 	err := c.Init(pathConfig)
+
 	if err != nil {
 		return err
 	}
+
+	err = c.checkDotEnv(rootPath)
+
+	if err!= nil {
+        return err
+    }
+
+	// err = c.readDotEnv(rootPath)
+
 	return nil
 }
 
@@ -36,5 +48,15 @@ func (c *Celeritas) Init(p initPaths) error {
 			return err
 		}
 	}
+	return nil
+}
+
+func (c *Celeritas) checkDotEnv(path string) error {
+	err := c.CreateFileIfNotExists(fmt.Sprintf("%s/.env", path))
+
+	if err != nil {
+		return err
+	}
+
 	return nil
 }
