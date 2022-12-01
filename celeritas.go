@@ -1,6 +1,10 @@
 package celeritas
 
-import "fmt"
+import (
+	"fmt"
+
+	"github.com/joho/godotenv"
+)
 
 const version = "1.0.0"
 
@@ -34,7 +38,10 @@ func (c *Celeritas) New(rootPath string) error {
         return err
     }
 
-	// err = c.readDotEnv(rootPath)
+	err = godotenv.Load(rootPath + "/.env")
+	if err != nil {
+		return err
+	}
 
 	return nil
 }
