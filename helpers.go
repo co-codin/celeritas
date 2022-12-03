@@ -16,7 +16,7 @@ func (c *Celeritas) CreateDirIfNotExists(path string) error {
 }
 
 func (c *Celeritas) CreateFileIfNotExists(path string) error {
-	var _, err = os.Stat(path)
+	_, err := os.Stat(path)
 
     if os.IsNotExist(err) {
 		var file, err = os.Create(path)
